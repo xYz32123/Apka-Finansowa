@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget App</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/
+    font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/
+    2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous"
+     referrerpolicy="no-referrer" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <link 
+       href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap"
+       rel="stylesheet"
+    /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <header class="header">
+       <h1 class="header_heading">Budget App</h1>
+       <div id="menu-icon">
+        <!-- Zawartość pliku menu.svg -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/>
+        </svg>
+    </div> 
+    </header>
+    <main class="budget">
+        <section class="budget_structure" >
+            <p class="error hide" data-error>
+                Description can't be empty and value must be
+                 a number without any special chars.
+            </p>
+            <ul class="inputs">
+                <li class="switcher">
+                    <input 
+                        type="checkbox" 
+                        name="switcher" 
+                        id="switcher" 
+                        class="switcher_input"
+                        checked
+                        aria-label="Switcher"
+                        />
+                        <label for="switcher" 
+                        class="switcher_label"></label>
+                </li>
+                <li class="input">
+                    <input 
+                    type="text" 
+                    name="description" 
+                    id="description" 
+                    class="input_input"
+                    placeholder="Description"
+                    />
+                    <label 
+                    for="description" 
+                    class="input_label">Description</label>
+                </li>
+                <li class="input">
+                    <input 
+                    type="number" 
+                    name="value" 
+                    id="value" 
+                    class="input_input"
+                    placeholder="Value"
+                    min="0"
+                    />
+                    <label for="value" 
+                    class="input_label">Value</label>
+                </li>
+                <form id="transaction-form">
+                    <!-- Inne pola formularza -->
+                    <label for="category">Category</label>
+                    <select id="category" name="category">
+                        <option value="">Select Category</option>
+                        <option value="Daily">Daily</option>
+                        <option value="Seasonal">Seasonal</option>
+                        <option value="Others">Others</option>
+                    </select>
+                    <label for="subcategory">Subcategory</label>
+                    <select id="subcategory" name="subcategory">
+                        <option value="">Select Subcategory</option>
+                    </select>
+                    <label for="date">Date</label>
+                    <input type="date" id="date" name="date">
+                    <!-- <button type="submit">Add Transaction</button> -->
+                </form>
+               
+                
+                <li class="inputs_button">
+                    <button class="button" data-enter-button="data-enter-button" title="Enter">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
+                        class="button_icon">!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.<path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zM337 209L209 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L303 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg>
+                    </button>
+                </li>
+            </ul>
+            <section class="budget_balance">
+                <h2 class="balance_heading" data-total-budget-info>
+                </h2>
+                <article class="balance_list" data-balance-list>
+                    <section class="list" >
+                        <h3 class="list_heading list_heading--incomes">Incomes
+                        </h3>
+                        <ul class="list_list" data-balance-list-incomes>
+                            
+                        </ul>
+                    </section>
+                    <section class="list">
+                        <h3 class="list_heading list_heading--expenses">Expenses
+                        </h3>
+                        <ul class="list_list" data-balance-list-expenses>
+                            
+                        </ul>
+                    </section>
+                </article>
+            </section>
+            
+        </section>
+        <section class="Menu">
+            <aside id="category-menu" class="hidden">
+                <ul>
+                    <li class="category" data-category="Daily">Daily
+                        <ul id="category-list Daily"></ul>
+                        <ul class="subcategory ">
+                            <li data-subcategory="Equipment">Equipment</li>
+                            <ul id="subcategory-list Equipment"></ul>
+                            <li data-subcategory="Transport">Transport</li>
+                        </ul>
+                    </li>
+                    <li class="category" data-category="Seasonal">Seasonal
+                        <ul class="subcategory ">
+                            <li data-subcategory="Projects">Projects</li>
+                            <li data-subcategory="Personnel">Personnel</li>
+                        </ul>
+                    </li>
+                    <li class="category" data-category="Others">Others
+                        <ul class="subcategory ">
+                            <li data-subcategory="Others">Others</li>
+                            <li data-subcategory="Events">Events</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <section>
+                    <h2>Categories</h2>
+                    <ul id="category-list">
+                        
+                    </ul>
+                </section>
+                <section>
+                    <h2>Subcategories</h2>
+                    <ul id="subcategory-list">
+                        
+                    </ul>
+                </section>
+                <section>
+                    <h2>Transactions</h2>
+                    <ul id="transaction-list">
+                        
+                    </ul>
+                </section>
+            </aside>
+        </section>
+        <section>
+            <h2>Categories</h2>
+            <ul id="category-list">
+                <!-- Lista podkategorii będzie generowana dynamicznie -->
+            </ul>
+        </section>
+        <section>
+            <h2>Subcategories</h2>
+            <ul id="subcategory-list">
+                <!-- Lista podkategorii będzie generowana dynamicznie -->
+            </ul>
+        </section>
+        <section>
+            <h2>Transactions</h2>
+            <ul id="transaction-list">
+                <!-- Lista transakcji -->
+            </ul>
+        </section>
+        
+        </section>
+        
+        
+    </main>
+    
+    <script src="index.js"></script>
+    <script>
+        class BudgetAppStorage {
+            initializeApp() {
+                try {
+                    localStorage.setItem('test', 'test');
+                    localStorage.removeItem('test');
+                    console.log('localStorage is available');
+                    // Kontynuuj inicjalizację aplikacji
+                } catch (e) {
+                    console.error('Access to localStorage is not allowed:', e);
+                    // Obsłuż brak dostępu do localStorage
+                    this.useAlternativeStorage();
+                }
+            }
+
+            useAlternativeStorage() {
+                console.warn('Using alternative storage mechanism');
+                // Dodaj kod do użycia alternatywnego mechanizmu przechowywania
+            }
+
+            // Dodaj inne metody BudgetApp tutaj
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+        // Check if the user is logged in
+        if (!localStorage.getItem('loggedIn')) {
+            // If not, redirect to login page
+            window.location.href = 'BudgetApppart1.html';
+        }
+
+        // Initialize the budget app
+       // const app = new BudgetApp();
+        //app.initializeApp();
+    });
+
+    //     document.addEventListener('DOMContentLoaded', () => {
+            
+    //         const app = new BudgetApp();
+    //         app.initializeApp();
+    // });
+    </script>
+
+
+</body>
+</html>

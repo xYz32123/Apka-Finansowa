@@ -1,0 +1,36 @@
+:root {
+    --income--color: #68df90;
+    --expense--color: #e73636;
+
+    --grey-color: #3f3f3f;
+    --blue-color: hsl(193, 78%, 70%);
+
+    --form--background-color: #e2ebf0;
+    --balance-background-color: #cfd9df;
+    --left-background-color: #f2bbe2;
+    --right-background-color: #bbf2e0;
+}
+
+.body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+}
+.container {
+    display: flex;
+    flex: 1;
+}
+.left, .right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.left {
+    background-color:var(--left--background-color);
+}
+.right {
+    background-color:var(--right--background-color);
+}
